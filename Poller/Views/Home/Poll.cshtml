@@ -1,0 +1,95 @@
+@model string
+
+@{
+    ViewBag.Title = "title";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>@ViewData["Title"] - Poller</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css"/>
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
+              crossorigin="anonymous"
+              integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE="/>
+    </environment>
+    <link rel="stylesheet" href="~/css/site.css"/>
+ 
+    <style>
+    .common{
+             display: block; 
+                      height: 100%;
+                      min-height: 96vh;
+background-size: 100%;
+        }
+     .common img{
+      margin-left: auto;
+          margin-right: auto;
+          height: 100%;
+           padding: 1rem;
+          display: none;
+      
+     }
+     .si{
+        background: #1c7430 url("/css/happy.png") no-repeat center center;
+}
+        
+     .ni{
+        background: #e0a800 url("/css/surprised.png") no-repeat center center;
+}
+                
+    .no{
+        background: #721c24 url("/css/sad.png") no-repeat center center;
+}
+    </style>
+
+
+</head>
+<body>
+
+<section style="width: 100%; min-height: 100vh">
+<div class="container-fluid">
+<div class="row">
+    <div class="col-sm   si">
+        <a href="@Url.Action("Up", "Home", new {key = Model, Value = "si"})">
+            <div class="common">
+                <img src="/css/happy.png" />
+            </div>
+        </a>
+
+    </div>
+    <div class="col-sm   ni">
+        <a href="@Url.Action("Up", "Home", new {key = Model, Value = "ni"})">
+            <div class="common">
+                <img src="/css/surprised.png" />
+            </div>
+        </a>
+    </div>
+    <div class="col-sm   no">
+        <a href="@Url.Action("Up", "Home", new {key = Model, Value = "no"})">
+            <div class="common">
+                <img src="/css/sad.png" />
+            </div>
+        </a>
+
+    </div>
+</div>
+</div>
+
+</section>
+
+
+     <a href="@Url.Action("Index", "Home", null)">
+                 Back
+            </a>
+    <div>Icons made by <a href="https://www.flaticon.com/authors/baianat" title="Baianat">Baianat</a> from <a href="https://www.flaticon.com/"             title="Flaticon">www.flaticon.com</a></div>
+</body>
